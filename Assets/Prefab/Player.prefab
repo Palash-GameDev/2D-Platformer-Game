@@ -169,3 +169,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 6369243997041942424}
+  box2D: {fileID: 1015352372}
