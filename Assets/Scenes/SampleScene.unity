@@ -219,7 +219,7 @@ GameObject:
   - component: {fileID: 1349717159}
   - component: {fileID: 1349717158}
   - component: {fileID: 1349717157}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Platform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -343,7 +343,7 @@ PrefabInstance:
     - target: {fileID: 170119266067008059, guid: f5ee40d3c88653145bc0da0f7691e0db,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.5
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 170119266067008059, guid: f5ee40d3c88653145bc0da0f7691e0db,
         type: 3}
@@ -384,11 +384,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4033321001426700045, guid: f5ee40d3c88653145bc0da0f7691e0db,
-        type: 3}
-      propertyPath: m_Mass
-      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f5ee40d3c88653145bc0da0f7691e0db, type: 3}
