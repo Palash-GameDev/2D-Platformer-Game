@@ -5,13 +5,23 @@ using UnityEngine.UIElements;
 
 public class PlayerController : MonoBehaviour
 {
+    public float playerSpeed;
     public Animator animator;
     public BoxCollider2D box2D;
     private Vector2 colliderSize;
     private Vector2 colliderOffset;
+    private Rigidbody2D rb2D;
+    public float jumpForce;
+
+    void Awake()
+    {
+        rb2D = gameObject.GetComponent<Rigidbody2D>();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
+
         colliderSize = box2D.size;
         colliderOffset = box2D.offset;
 
@@ -20,25 +30,49 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        float horizontal = Input.GetAxisRaw("Horizontal");
+        float vertical = Input.GetAxisRaw("Jump");
 
-        PlayerInput();
+        PlayerInput(horizontal, vertical);
+        MoveCharcter(horizontal, vertical);
     }
-
-    void PlayerInput()
+    private void MoveCharcter(float horizontal, float vertical)
     {
-        float speed = Input.GetAxisRaw("Horizontal");
-        animator.SetFloat("Speed", Mathf.Abs(speed));
+        Vector3 position = transform.position;
+        position.x += horizontal * playerSpeed * Time.deltaTime;
+        transform.position = position;
+
+        if (vertical > 0)
+        {
+            rb2D.AddForce((Vector2.up * jumpForce), ForceMode2D.Force);
+        }
+
+    }
+    void PlayerInput(float horizontal, float vertical)
+    {
+
+        animator.SetFloat("Speed", Mathf.Abs(horizontal));
         Vector3 scale = transform.localScale;
-        if (speed < 0)
+        if (horizontal < 0)
         {
             scale.x = -1 * Mathf.Abs(scale.x);
         }
-        else if (speed > 0)
+        else if (horizontal > 0)
         {
-            scale.x = Mathf.Abs(speed);
+            scale.x = Mathf.Abs(horizontal);
         }
         transform.localScale = scale;
 
+        if (vertical > 0)
+        {
+            animator.SetBool("Jump",true);
+        }
+        
+        else 
+        { 
+            animator.SetBool("Jump",false);
+        }
+        // Crouch animation
         if (Input.GetKeyDown(KeyCode.LeftControl))
         {
             animator.SetBool("Crouch", true);                    // Crouch animation playing
@@ -52,15 +86,6 @@ public class PlayerController : MonoBehaviour
             box2D.offset = colliderOffset;
         }
 
-        float vertical = Input.GetAxisRaw("Vertical");
-        if (vertical > 0)
-        {
-            animator.SetBool("Jump", true);      // Play the jump animation
-        }
-        else if (vertical < 0)
-        {
-            animator.SetBool("Jump", false);
-        }
     }
 
 
