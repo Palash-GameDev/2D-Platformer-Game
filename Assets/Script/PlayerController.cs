@@ -10,8 +10,12 @@ public class PlayerController : MonoBehaviour
     public BoxCollider2D box2D;
     private Vector2 colliderSize;
     private Vector2 colliderOffset;
-    private Rigidbody2D rb2D;
+    private Rigidbody2D rb2D; 
     public float jumpForce;
+    public Transform groundCheck;
+    public float groundCheckRadius;
+    public LayerMask layerGround;
+    private  bool isTouchingGround;
 
     void Awake()
     {
@@ -30,26 +34,21 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        isTouchingGround = Physics2D.OverlapCircle(groundCheck.position,groundCheckRadius,layerGround);
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Jump");
 
-        PlayerInput(horizontal, vertical);
-        MoveCharcter(horizontal, vertical);
+        HorizontalMovement(horizontal);
+        VerticalMovement(vertical);
+        CrouchMovement();
+
     }
-    private void MoveCharcter(float horizontal, float vertical)
+
+    void HorizontalMovement(float horizontal)
     {
         Vector3 position = transform.position;
         position.x += horizontal * playerSpeed * Time.deltaTime;
         transform.position = position;
-
-        if (vertical > 0)
-        {
-            rb2D.AddForce((Vector2.up * jumpForce), ForceMode2D.Force);
-        }
-
-    }
-    void PlayerInput(float horizontal, float vertical)
-    {
 
         animator.SetFloat("Speed", Mathf.Abs(horizontal));
         Vector3 scale = transform.localScale;
@@ -63,15 +62,25 @@ public class PlayerController : MonoBehaviour
         }
         transform.localScale = scale;
 
-        if (vertical > 0)
+    }
+
+
+    void VerticalMovement(float vertical)
+    {
+        if (vertical > 0 && isTouchingGround == true)
         {
-            animator.SetBool("Jump",true);
+            animator.SetBool("Jump", true);
+            // rb2D.AddForce((Vector2.up * jumpForce), ForceMode2D.Force);
+            rb2D.velocity = new Vector2(rb2D.velocity.x, jumpForce);
         }
-        
-        else 
-        { 
-            animator.SetBool("Jump",false);
+        else
+        {
+            animator.SetBool("Jump", false);
         }
+
+    }
+    void CrouchMovement()
+    {
         // Crouch animation
         if (Input.GetKeyDown(KeyCode.LeftControl))
         {
@@ -85,10 +94,7 @@ public class PlayerController : MonoBehaviour
             box2D.size = colliderSize;                  // Reset the collider size 
             box2D.offset = colliderOffset;
         }
-
     }
-
-
 
 }//class
 
