@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour
     public float groundCheckRadius;
     public LayerMask layerGround;
     private bool isTouchingGround;
+    public float levelEndRange;
 
     void Awake()
     {
@@ -43,9 +44,9 @@ public class PlayerController : MonoBehaviour
         VerticalMovement(vertical);
         CrouchMovement();
 
-        if (this.transform.position.y < -10)
+        if (this.transform.position.y < levelEndRange)
         {
-            SceneManager.LoadScene("GamePlay_Learning");
+            SceneManager.LoadScene("Learn_GamePlay");
         }
 
     }
