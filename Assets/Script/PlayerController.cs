@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -10,12 +11,13 @@ public class PlayerController : MonoBehaviour
     public BoxCollider2D box2D;
     private Vector2 colliderSize;
     private Vector2 colliderOffset;
-    private Rigidbody2D rb2D; 
+    private Rigidbody2D rb2D;
     public float jumpForce;
     public Transform groundCheck;
     public float groundCheckRadius;
     public LayerMask layerGround;
-    private  bool isTouchingGround;
+    private bool isTouchingGround;
+    public float levelEndRange;
 
     void Awake()
     {
@@ -34,13 +36,18 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        isTouchingGround = Physics2D.OverlapCircle(groundCheck.position,groundCheckRadius,layerGround);
+        isTouchingGround = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, layerGround);
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Jump");
 
         HorizontalMovement(horizontal);
         VerticalMovement(vertical);
         CrouchMovement();
+
+        if (this.transform.position.y < levelEndRange)
+        {
+            SceneManager.LoadScene("Learn_GamePlay");
+        }
 
     }
 
@@ -70,6 +77,8 @@ public class PlayerController : MonoBehaviour
         if (vertical > 0 && isTouchingGround == true)
         {
             animator.SetBool("Jump", true);
+            animator.SetBool("Crouch", false);
+
             // rb2D.AddForce((Vector2.up * jumpForce), ForceMode2D.Force);
             rb2D.velocity = new Vector2(rb2D.velocity.x, jumpForce);
         }
@@ -82,7 +91,7 @@ public class PlayerController : MonoBehaviour
     void CrouchMovement()
     {
         // Crouch animation
-        if (Input.GetKeyDown(KeyCode.LeftControl))
+        if (Input.GetKeyDown(KeyCode.LeftControl) && isTouchingGround == true)
         {
             animator.SetBool("Crouch", true);                    // Crouch animation playing
             box2D.offset = new Vector2(colliderOffset.x, colliderOffset.y / 2);       // Resize the offset
