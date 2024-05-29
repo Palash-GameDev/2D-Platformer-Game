@@ -19,6 +19,8 @@ public class PlayerController : MonoBehaviour
     private bool isTouchingGround;
     public float levelEndRange;
 
+    public ScoreController scoreController;
+
     void Awake()
     {
         rb2D = gameObject.GetComponent<Rigidbody2D>();
@@ -105,6 +107,11 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public void PickUpKey()
+    {
+        Debug.Log("Key PickedUp!");
+        scoreController.IncreaseScore(10);
+    }
 }//class
 
 
