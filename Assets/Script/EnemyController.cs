@@ -7,7 +7,7 @@ public class EnemyController : MonoBehaviour
     public float moveSpeed;
     public Transform[] patrolPoints;
     public int patrolDestination;
-
+    public bool isTouching;
 
     void Update()
     {
@@ -37,8 +37,10 @@ public class EnemyController : MonoBehaviour
     {
         if (other.gameObject.GetComponent<PlayerController>() != null)
         {
+            isTouching = true;
             PlayerController playerController = other.gameObject.GetComponent<PlayerController>();
-            playerController.KillPlayer();
+           // playerController.KillPlayer();
+            playerController.DecreaseHealth();
 
         }
 
