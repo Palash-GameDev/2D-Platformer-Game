@@ -11,7 +11,8 @@ public class KeyController : MonoBehaviour
         {
             PlayerController playerController = other.gameObject.GetComponent<PlayerController>();
             playerController.PickUpKey();
-           Destroy(gameObject);
+            
+            Destroy(gameObject);
         }
         
     }

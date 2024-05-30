@@ -19,6 +19,9 @@ public class PlayerController : MonoBehaviour
     public LayerMask layerGround;
     private bool isTouchingGround;
     public float levelEndRange;
+    private int maxLife = 3;
+    public GameObject[] playerHeart;
+
 
     public ScoreController scoreController;
 
@@ -30,7 +33,7 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        maxLife = playerHeart.Length ;
         colliderSize = box2D.size;
         colliderOffset = box2D.offset;
 
@@ -114,11 +117,28 @@ public class PlayerController : MonoBehaviour
         scoreController.IncreaseScore(10);
     }
 
+    public void DecreaseHealth()
+    {
+        if (maxLife > 1)
+        {
+           
+            maxLife -= 1; // Decrease health by one.
+            Destroy(playerHeart[maxLife].gameObject);
+            Debug.Log("Decrease health by one.");
+
+        }
+        else
+        {
+            maxLife -= 1;
+            KillPlayer();
+        }
+    }
+
     public void KillPlayer()
     {
         Debug.Log("Enemy Killed PLayer........");
-        animator.Play("Player_death");
-        //Destroy(gameObject);
+        //animator.Play("Player_death");
+
         ReloadLevel();
     }
 
