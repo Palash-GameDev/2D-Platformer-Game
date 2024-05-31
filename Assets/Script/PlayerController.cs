@@ -24,6 +24,7 @@ public class PlayerController : MonoBehaviour
 
 
     public ScoreController scoreController;
+    public GameOverController gameOverController;
 
     void Awake()
     {
@@ -138,14 +139,11 @@ public class PlayerController : MonoBehaviour
     {
         Debug.Log("Enemy Killed PLayer........");
         //animator.Play("Player_death");
-
-        ReloadLevel();
+        gameOverController.PlayerDied();
+        this.enabled = false;
+        
     }
 
-    void ReloadLevel()
-    {
-        SceneManager.LoadScene(0);
-    }
 
 
 

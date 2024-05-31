@@ -264,7 +264,12 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   levelEndRange: -20
+  playerHeart:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   scoreController: {fileID: 0}
+  gameOverController: {fileID: 0}
 --- !u!1 &473862521498654031
 GameObject:
   m_ObjectHideFlags: 0
