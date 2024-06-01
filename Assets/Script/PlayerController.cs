@@ -34,7 +34,7 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        maxLife = playerHeart.Length ;
+        maxLife = playerHeart.Length;
         colliderSize = box2D.size;
         colliderOffset = box2D.offset;
 
@@ -53,7 +53,9 @@ public class PlayerController : MonoBehaviour
 
         if (this.transform.position.y < levelEndRange)
         {
-            SceneManager.LoadScene("Learn_GamePlay");
+            // SceneManager.LoadScene("Level 1");
+            Scene scene = SceneManager.GetActiveScene();
+            SceneManager.LoadScene(scene.buildIndex);
         }
 
     }
@@ -122,7 +124,7 @@ public class PlayerController : MonoBehaviour
     {
         if (maxLife > 1)
         {
-           
+
             maxLife -= 1; // Decrease health by one.
             Destroy(playerHeart[maxLife].gameObject);
             Debug.Log("Decrease health by one.");
@@ -138,10 +140,11 @@ public class PlayerController : MonoBehaviour
     public void KillPlayer()
     {
         Debug.Log("Enemy Killed PLayer........");
-        //animator.Play("Player_death");
+        animator.SetTrigger("PlayerDied");
+
         gameOverController.PlayerDied();
         this.enabled = false;
-        
+
     }
 
 
