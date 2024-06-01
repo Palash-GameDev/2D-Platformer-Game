@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Playables;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 
@@ -10,6 +9,7 @@ public class LobbyController : MonoBehaviour
 {
     public Button playButton;
     public Button quitButton;
+    public GameObject LevelSelection;
    
     // Start is called before the first frame update
     void Awake()
@@ -20,7 +20,8 @@ public class LobbyController : MonoBehaviour
     }
     void PlayGame()
     {
-        SceneManager.LoadScene("Learn_GamePlay");
+       
+        LevelSelection.SetActive(true);
     }
     void QuitGame()
     {
