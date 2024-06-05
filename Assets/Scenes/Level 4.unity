@@ -259,10 +259,28 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 20106254}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 20106257}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 96df66e6983789c4199d05265c34be84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &20106257 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1111737298890238247, guid: 2169d194ad1fc3848869bc3a7fced064,
+    type: 3}
+  m_PrefabInstance: {fileID: 20106254}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &20106258 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1111737297647945528, guid: 2169d194ad1fc3848869bc3a7fced064,
+    type: 3}
+  m_PrefabInstance: {fileID: 20106254}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &205816463
@@ -1879,6 +1897,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2465207728da9a14ba5f8c4039bb33cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameover: {fileID: 20106258}
+  youWin: {fileID: 21300000, guid: 94efd56b7ac5bf84ba2830c0ff8eaa23, type: 3}
+  gameOverPanel: {fileID: 20106257}
 --- !u!61 &994356119
 BoxCollider2D:
   m_ObjectHideFlags: 0

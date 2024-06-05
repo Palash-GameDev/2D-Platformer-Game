@@ -1,4 +1,20 @@
 using System;
+
+public enum LevelStatus
+{
+    Locked,
+    Unlocked,
+    Completed
+}
+
+
+
+
+
+
+
+/*
+
 public class Levels
 {
     public static string Level1 = "Level 1";
@@ -6,4 +22,4 @@ public class Levels
     public static string Level3 = "Level 3";
     public static string Level4 = "Level 4";
 
-}
+}*/
