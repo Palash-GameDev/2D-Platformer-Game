@@ -346,7 +346,6 @@ GameObject:
   - component: {fileID: 1111737298059888189}
   - component: {fileID: 1111737298059888188}
   - component: {fileID: 1111737298059888191}
-  - component: {fileID: 1111737298059888186}
   m_Layer: 5
   m_Name: Home Button (1)
   m_TagString: Untagged
@@ -457,19 +456,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &1111737298059888186
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1111737298059888177}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 95e8e08ffd0536945928ca408476f9f5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  LevelName: Lobby
 --- !u!1 &1111737298304120638
 GameObject:
   m_ObjectHideFlags: 0
@@ -699,3 +685,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   restartButton: {fileID: 1111737297530961377}
+  homeButton: {fileID: 1111737298059888191}
