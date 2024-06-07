@@ -11,7 +11,7 @@ public class LevelManager : MonoBehaviour
     private static LevelManager instance;
     public string level1;
     public string [] levels;
-    public static LevelManager Instace
+    public static LevelManager Instance
     {
         get
         {
@@ -59,7 +59,7 @@ public class LevelManager : MonoBehaviour
         Scene currentScene = SceneManager.GetActiveScene();
 
         // set level status to complete
-        LevelManager.Instace.SetLevelStatus(currentScene.name, LevelStatus.Completed);
+        LevelManager.Instance.SetLevelStatus(currentScene.name, LevelStatus.Completed);
 
         /*  // unlock next level
         int nextSceneIndex = currentScene.buildIndex + 1;
