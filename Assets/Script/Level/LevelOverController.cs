@@ -18,6 +18,7 @@ public class LevelOverController : MonoBehaviour
             Debug.Log("Level Completd!");
             gameOverPanel.SetActive(true); 
             gameover.sprite = youWin;
+            SoundManager.Instance.Play(Sounds.levelComplete);
             LevelManager.Instance.MarkCurrentLevelComplete();           
         }
 
