@@ -127,6 +127,7 @@ public class PlayerController : MonoBehaviour
 
             maxLife -= 1; // Decrease health by one.
             Destroy(playerHeart[maxLife].gameObject);
+            rb2D.AddForce(Vector2.up * 6, ForceMode2D.Impulse); // player Jumping on collision  
             Debug.Log("Decrease health by one.");
 
         }
