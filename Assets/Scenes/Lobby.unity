@@ -436,7 +436,7 @@ MonoBehaviour:
   - soundType: 4
     soundClip: {fileID: 8300000, guid: 0651b56880a11ef45909b779443691aa, type: 3}
   - soundType: 2
-    soundClip: {fileID: 8300000, guid: 400c44a256b5eeb46897fd93bd481a00, type: 3}
+    soundClip: {fileID: 8300000, guid: 52659b3c95dc6427c9feef7fd4624f81, type: 3}
   - soundType: 5
     soundClip: {fileID: 8300000, guid: d76c71e98617e1c41a5cdc490eb1bee1, type: 3}
   - soundType: 6
